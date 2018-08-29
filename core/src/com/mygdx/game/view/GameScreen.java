@@ -17,7 +17,7 @@ public class GameScreen implements Screen {
     public void show() {
         gayTexture = new Texture(Gdx.files.internal("gay.png"));
         batch = new SpriteBatch();
-        gay = new Gay(gayTexture,0,0,60,30);
+        gay = new Gay(gayTexture,60,20,5,10);
 
     }
 
