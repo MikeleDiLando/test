@@ -23,7 +23,7 @@ public class GameScreen implements Screen {
     @Override
     public void show() {
         batch = new SpriteBatch();
-        gay = new Gay(textureAtlas.findRegion("0"),0,0,3f,3f * 1.18f);
+        gay = new Gay(textureAtlas.findRegion("0"),0f,0f,3f,3f * 1.18f);
         ui = new UI();
 
         resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -35,8 +35,8 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0,0,0,1);
-        Gdx.gl.glClearDepthf(GL20.GL_DEPTH_ATTACHMENT);
+        Gdx.gl.glClearColor(0,0.3f,0,1);
+        Gdx.gl.glClearDepthf(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         deltaCff = delta;
@@ -51,8 +51,8 @@ public class GameScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        float aspectRation = (float) height / width;
-        camera = new OrthographicCamera(20f, 20f * aspectRation);
+        float aspectRatio = (float) height / width;
+        camera = new OrthographicCamera(20f, 20f * aspectRatio);
     }
 
     @Override

@@ -3,12 +3,13 @@ package com.mygdx.game.desktop;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.mygdx.game.Main;
+import com.mygdx.game.utils.Constants;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.width = 854;
-		config.height = 480;
+		config.width = Constants.APP_WIDTH;
+		config.height = Constants.APP_HEIGHT;
 		new LwjglApplication(new Main(), config);
 	}
 }
