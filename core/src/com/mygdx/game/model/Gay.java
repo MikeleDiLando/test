@@ -2,13 +2,14 @@ package com.mygdx.game.model;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.game.control.GayController;
 
 public class Gay extends GameObject {
 
     private GayController gayController;
-    public Gay(Texture texture, float x, float y, float width, float height) {
-        super(texture, x, y, width, height);
+    public Gay(TextureRegion textureRegion, float x, float y, float width, float height) {
+        super(textureRegion, x, y, width, height);
         gayController = new GayController(bounds);
     }
 

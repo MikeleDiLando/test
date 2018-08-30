@@ -3,6 +3,7 @@ package com.mygdx.game.model;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Polygon;
 
 abstract class GameObject {
@@ -10,8 +11,8 @@ abstract class GameObject {
     Polygon bounds;
     Sprite object;
 
-    GameObject (Texture texture, float x, float y, float width, float height) {
-        object = new Sprite(texture);
+    GameObject (TextureRegion textureRegion, float x, float y, float width, float height) {
+        object = new Sprite(textureRegion);
         object.setSize(width, height);
         object.setPosition(x, y);
         object.setOrigin(width / 2f, height / 2f);

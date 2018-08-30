@@ -6,29 +6,38 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.mygdx.game.model.Gay;
+import com.mygdx.game.utils.UI;
 
 public class GameScreen implements Screen {
 
-    private Texture gayTexture;
+    private TextureAtlas textureAtlas;
     private SpriteBatch batch;
     private Gay gay;
     private OrthographicCamera camera;
+    private UI ui;
 
     public static float deltaCff;
 
     @Override
     public void show() {
-        gayTexture = new Texture(Gdx.files.internal("gay.png"));
         batch = new SpriteBatch();
-        gayTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        gay = new Gay(gayTexture,0,0,3f,3f * 1.18f);
+        gay = new Gay(textureAtlas.findRegion("0"),0,0,3f,3f * 1.18f);
+        ui = new UI();
+
+        resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+    }
+
+    public void setTextureAtlas(TextureAtlas textureAtlas) {
+        this.textureAtlas = textureAtlas;
     }
 
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClearDepthf(GL20.GL_DEPTH_ATTACHMENT);
+        Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         deltaCff = delta;
 
@@ -36,6 +45,8 @@ public class GameScreen implements Screen {
         batch.begin();
             gay.draw(batch);
         batch.end();
+
+        ui.draw();
     }
 
     @Override
@@ -61,7 +72,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-        gayTexture.dispose();
-
+        batch.dispose();
+        ui.dispose();
     }
 }
